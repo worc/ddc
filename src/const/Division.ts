@@ -1,6 +1,6 @@
 import { Division } from '../types/dewey'
 
-const Divisions: Division[] = [
+export const Divisions: Division[] = [
   { code: '000', name: 'Computer science, knowledge and systems' },
   { code: '010', name: 'Bibliography' },
   { code: '020', name: 'Library and information sciences' },
