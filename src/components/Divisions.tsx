@@ -5,11 +5,12 @@ import List from './lists/List'
 import MainClassFilterContext from '../context/MainClassFilterContext'
 import ListLayout from './layout/ListLayout'
 import ControlBar from './controls/ControlBar'
+import useCount from '../hooks/useCount'
 
 // TODO stabilize the list on MORE/LESS
 export default function Divisions () {
   const context = useContext(MainClassFilterContext)
-  const [count, setCount] = useState(5)
+  const [count, increment, decrement] = useCount(5)
   const [stale, setStale] = useState(1)
   const [displayDivisions, setDisplayDivisions] = useState<Division[]>([])
 
@@ -29,20 +30,6 @@ export default function Divisions () {
     setDisplayDivisions(filteredDivisions)
   }, [activeCodes, count, stale])
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const count = parseInt(event.target.value, 10)
-    setCount(count)
-  }
-
-  function incrementCount () {
-    const newCount = count + 1
-    setCount(newCount)
-  }
-  function decrementCount () {
-    const newCount = Math.max(0, count - 1)
-    setCount(newCount)
-  }
-
   function shuffleDivisions () {
     const newStale = stale * -1
     setStale(newStale)
@@ -50,7 +37,7 @@ export default function Divisions () {
 
   return (
     <ListLayout header={'Divisions'}>
-      <ControlBar handleUp={incrementCount} handleDown={decrementCount} handleShuffle={shuffleDivisions} />
+      <ControlBar handleUp={increment} handleDown={decrement} handleShuffle={shuffleDivisions} />
       <List display={displayDivisions}/>
     </ListLayout>
   )
