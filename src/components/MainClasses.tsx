@@ -1,17 +1,11 @@
 import React from 'react'
-import { mainClassPicker } from '../picker/_picker'
+import { MainClassList} from './lists'
 
 export default function MainClasses () {
-  const mainClasses = mainClassPicker(12)
-
   return (
     <>
-      { mainClasses.map(mainClass => (
-        <div>
-          <div>{ mainClass.code } | { mainClass.name }</div>
-        </div>
-      ))
-      }
+      <h1>Main Classes</h1>
+      <MainClassList/>
     </>
   )
 }
