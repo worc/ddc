@@ -2,6 +2,9 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createGlobalStyle } from 'styled-components'
 import Header from './components/Header'
+import MainClasses from './components/MainClasses'
+import Divisions from './components/Divisions'
+import Sections from './components/Sections'
 
 const GlobalStyle = createGlobalStyle`
     #app {
@@ -21,6 +24,11 @@ render(
   <React.Fragment>
     <GlobalStyle/>
     <Header/>
+    <MainClasses/>
+    <hr/>
+    <Divisions/>
+    <hr/>
+    <Sections/>
   </React.Fragment>
   , document.getElementById('app')
 )

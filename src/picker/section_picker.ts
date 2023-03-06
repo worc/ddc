@@ -2,6 +2,6 @@ import { Section } from '../types/dewey'
 import { Sections } from '../const/Section'
 import pickFromGenerator from '../util/pickFromGenerator'
 
-export default function sectionPicker(): Section[] {
-  return pickFromGenerator<Section>(Sections)
+export default function sectionsectionPicker(count = 1): Section[] {
+  return pickFromGenerator<Section>(Sections, count)
 }
