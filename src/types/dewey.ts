@@ -10,7 +10,7 @@ export type MainClassCode =
   | '800'
   | '900'
 
-type MainClassName =
+export type MainClassName =
   | 'Computer science, information and general works'
   | 'Philosophy and psychology'
   | 'Religion'

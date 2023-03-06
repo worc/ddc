@@ -7,19 +7,18 @@ import MainClassFilterContext from '../../context/MainClassFilterContext'
 interface Props {
   item: DeweyClass
   handleClick?: (event: React.MouseEvent<HTMLDivElement>) => void
+  isMainClass?: boolean
 }
-export default function Entry ({ item, handleClick }: Props) {
-  const context = useContext(MainClassFilterContext)
+export default function Entry ({ item, handleClick, isMainClass = false }: Props) {
+  const { filters } = useContext(MainClassFilterContext)
 
-  //TODO find unique active filters
-  const activeFilters = Object.entries(context.filters).filter(filter => filter[1])
-  const activeCodes = activeFilters.map(entry => entry[0])
-  // const isActive = activeFilters.some(filter => (filter.code === item.code))
+  const isActive = filters.some(filter => (filter.code === item.code && filter.name === item.name))
 
   return (
     <Container
       data-code={item.code}
-      className={(activeCodes.includes(item.code)) ? 'filter-on' : ''}
+      data-name={item.name}
+      className={isActive && isMainClass ? 'filter-on' : ''}
       key={`${item.code}_${item.name}`}
       onClick={handleClick}
     >
@@ -45,6 +44,8 @@ const Container = styled.div`
   }
   
   &.filter-on {
+    background: #00a2bd;
+    color: white;
     font-style: italic;
     font-weight: bold;
   }

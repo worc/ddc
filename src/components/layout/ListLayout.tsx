@@ -20,6 +20,7 @@ export default function ListLayout (props: React.PropsWithChildren<Props>) {
 const Container = styled.div`
   display: flex;
   flex-flow: row nowrap;
+  transition: all ease-in-out;
 
   & > .list-header {
     flex: 0 0 auto;

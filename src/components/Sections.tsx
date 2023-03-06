@@ -8,21 +8,16 @@ import { Sections as sections } from '../const/Section'
 import useFilteredEntries from '../hooks/useFilteredEntries'
 
 export default function Sections () {
-  const context = useContext(MainClassFilterContext)
-
-  const activeCodes = useMemo(() => {
-    const activeFilters = Object.entries(context.filters).filter(filter => filter[1])
-    return activeFilters.map(entry => entry[0])
-  }, [context.filters])
+  const { filters } = useContext(MainClassFilterContext)
 
   const validSections = useMemo(() => {
     return sections.filter(item => {
-      if (activeCodes.length === 0) return true
+      if (filters.length === 0) return true
 
       const sectionMainClass = item.code[0]
-      return activeCodes.some(code => code.startsWith(sectionMainClass))
+      return filters.some(filter => filter.code.startsWith(sectionMainClass))
     })
-  }, [activeCodes])
+  }, [filters])
 
   const [displaySections, setFilters, increment, decrement, shuffle] = useFilteredEntries<Section>(sections, validSections, 5)
 

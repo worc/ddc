@@ -10,10 +10,9 @@ export default function App () {
   function setFilters (...args: Parameters<IMainClassFilterContext['setFilters']>) {
     const [filters] = args
 
-    setMainClassFilters({
-      ...mainClassFilters,
+    setMainClassFilters([
       ...filters,
-    })
+    ])
   }
 
   return (

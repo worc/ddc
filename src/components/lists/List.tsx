@@ -6,13 +6,14 @@ import Entry from './Entry'
 interface Props {
   display: DeweyClass[]
   handleClick?: (event: React.MouseEvent<HTMLDivElement>) => void
+  isMainClass?: boolean
 }
 
-export default function List ({ display, handleClick }: Props) {
+export default function List ({ display, handleClick, isMainClass = false }: Props) {
   return (
     <Container>
       { display.map(item => (
-        <Entry item={item} handleClick={handleClick}/>
+        <Entry item={item} handleClick={handleClick} isMainClass={isMainClass}/>
       ))
       }
     </Container>
