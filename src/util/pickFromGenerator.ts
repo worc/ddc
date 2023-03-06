@@ -12,3 +12,34 @@ export default function pickFromGenerator<T> (list: T[], count = 1): T[] {
 
   return results
 }
+
+// export function pickAllFromGenerator<T> (list: T[]): T[] {
+//   const results: T[] = []
+//
+//   for (const value of drainFromShuffled<T>(list)) {
+//     results.push(value as T)
+//   }
+//
+//   return results
+// }
+
+interface PickUntilSatisfied<T> {
+  (
+    list: T[],
+    count: number,
+    discriminator: (arg: T) => boolean,
+  ) : T[]
+}
+
+export function pickUntilSatisfied<T>(...args: Parameters<PickUntilSatisfied<T>>): ReturnType<PickUntilSatisfied<T>> {
+  const [list, count, discriminator] = args
+
+  const results: T[] = []
+  const pool: T[] = list.filter(discriminator)
+
+  if (pool.length) {
+    return pickFromGenerator<T>(pool, count)
+  } else {
+    return results
+  }
+}

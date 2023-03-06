@@ -20,12 +20,14 @@ function * getFromShuffled<T> (list: T[]): Generator<T, void, boolean> {
   }
 }
 
-function * drainFromShuffled<T> (list: T[]) {
-  shuffle(list);
+// function * drainFromShuffled<T> (list: T[]) {
+//   shuffle(list);
+//
+//   while(list.length > 0) {
+//     yield list.pop()
+//   }
+// }
 
-  while(list.length > 0) {
-    yield list.pop()
-  }
-}
+// export { getFromShuffled, drainFromShuffled }
 
-export { getFromShuffled, drainFromShuffled }
+export { getFromShuffled }
