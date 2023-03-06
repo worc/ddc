@@ -1,43 +1,38 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react'
-import { Division } from '../types/dewey'
-import { divisionPickUntilSatisfied } from '../picker/division_picker'
+import React, { useContext, useEffect, useMemo } from 'react'
 import List from './lists/List'
 import MainClassFilterContext from '../context/MainClassFilterContext'
 import ListLayout from './layout/ListLayout'
 import ControlBar from './controls/ControlBar'
-import useCount from '../hooks/useCount'
+import { Divisions as divisions } from '../const/Division'
+import useFilteredEntries from '../hooks/useFilteredEntries'
 
 // TODO stabilize the list on MORE/LESS
 export default function Divisions () {
   const context = useContext(MainClassFilterContext)
-  const [count, increment, decrement] = useCount(5)
-  const [stale, setStale] = useState(1)
-  const [displayDivisions, setDisplayDivisions] = useState<Division[]>([])
 
   const activeCodes = useMemo(() => {
     const activeFilters = Object.entries(context.filters).filter(filter => filter[1])
     return activeFilters.map(entry => entry[0])
   }, [context.filters])
 
-  useEffect(() => {
-    const filteredDivisions = divisionPickUntilSatisfied(count, (division => {
+  const validDivisions = useMemo(() => {
+    return divisions.filter(item => {
       if (activeCodes.length === 0) return true
 
-      const divisionMainClass = division.code[0]
+      const divisionMainClass = item.code[0]
       return activeCodes.some(code => code.startsWith(divisionMainClass))
-    }))
+    })
+  }, [activeCodes])
 
-    setDisplayDivisions(filteredDivisions)
-  }, [activeCodes, count, stale])
+  const [displayDivisions, setFilters, increment, decrement, shuffle] = useFilteredEntries(divisions, validDivisions, 5)
 
-  function shuffleDivisions () {
-    const newStale = stale * -1
-    setStale(newStale)
-  }
+  useEffect(() => {
+    setFilters(validDivisions)
+  }, [validDivisions])
 
   return (
     <ListLayout header={'Divisions'}>
-      <ControlBar handleUp={increment} handleDown={decrement} handleShuffle={shuffleDivisions} />
+      <ControlBar handleUp={increment} handleDown={decrement} handleShuffle={shuffle} />
       <List display={displayDivisions}/>
     </ListLayout>
   )
