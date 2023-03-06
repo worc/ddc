@@ -1,6 +1,6 @@
 import { MainClass } from '../types/dewey'
 
-export const MainClasses: MainClass[] = [
+export const mainClassList: MainClass[] = [
   { code: '000', name: 'Computer science, information and general works' },
   { code: '100', name: 'Philosophy and psychology' },
   { code: '200', name: 'Religion' },
