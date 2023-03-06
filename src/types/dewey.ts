@@ -1,4 +1,4 @@
-type MainClassCode =
+export type MainClassCode =
   | '000'
   | '100'
   | '200'

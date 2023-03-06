@@ -1,10 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { createGlobalStyle } from 'styled-components'
-import Header from './components/Header'
-import MainClasses from './components/MainClasses'
-import Divisions from './components/Divisions'
-import Sections from './components/Sections'
+import App from './app'
 
 const GlobalStyle = createGlobalStyle`
     #app {
@@ -23,12 +20,7 @@ const GlobalStyle = createGlobalStyle`
 render(
   <React.Fragment>
     <GlobalStyle/>
-    <Header/>
-    <MainClasses/>
-    <hr/>
-    <Divisions/>
-    <hr/>
-    <Sections/>
+    <App/>
   </React.Fragment>
   , document.getElementById('app')
 )
