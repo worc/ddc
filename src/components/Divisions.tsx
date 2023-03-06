@@ -17,6 +17,8 @@ export default function Divisions () {
 
   useEffect(() => {
     const filteredDivisions = divisionPickUntilSatisfied(count, (division => {
+      if (activeCodes.length === 0) return true
+
       const divisionMainClass = division.code[0]
       return activeCodes.some(code => code.startsWith(divisionMainClass))
     }))
@@ -31,7 +33,7 @@ export default function Divisions () {
 
   return (
     <ListLayout header={'Divisions'}>
-      <div><label><input type="number" value={count} onChange={handleChange}/>count</label></div>
+      { displayDivisions.length ? <div><label><input type="number" value={count} onChange={handleChange}/>count</label></div> : null }
       <List display={displayDivisions}/>
     </ListLayout>
   )
