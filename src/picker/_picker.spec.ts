@@ -38,6 +38,26 @@ describe('Pickers', () => {
     const results = mainClassPicker(count)
 
     expect(results).toHaveLength(11)
-    expect(results.length > MainClasses.length)
+    expect(results.length > mainClassList.length)
+  })
+
+  describe('Picking zero returns an empty array', () => {
+    test('Main class picker', () => {
+      const results = mainClassPicker(0)
+
+      expect(results).toHaveLength(0)
+    })
+
+    test('Division picker', () => {
+      const results = divisionPicker(0)
+
+      expect(results).toHaveLength(0)
+    })
+
+    test('Section picker', () => {
+      const results = sectionPicker(0)
+
+      expect(results).toHaveLength(0)
+    })
   })
 })
