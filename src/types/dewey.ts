@@ -22,7 +22,7 @@ type MainClassName =
   | 'Literature'
   | 'History and geography'
 
-interface DeweyClass {
+export interface DeweyClass {
   code: string
   name: string
   subclasses?: DeweyClass[]
