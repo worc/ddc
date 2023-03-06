@@ -14,9 +14,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3 {
-    border: 1px solid red;
-    text-align: center;
     margin: 0;
+    text-align: center;
   }
 
   h1 {

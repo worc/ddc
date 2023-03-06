@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { sectionPicker } from '../picker/_picker'
 import List from './lists/List'
+import ListLayout from './layout/ListLayout'
 
 export default function Sections () {
   const [count, setCount] = useState(5)
@@ -13,10 +14,9 @@ export default function Sections () {
   }
 
   return (
-    <>
-      <h3>Sections</h3>
+    <ListLayout header={'Sections'}>
       <div><label><input type="number" value={count} onChange={handleChange}/>count</label></div>
       <List display={sections}/>
-    </>
+    </ListLayout>
   )
 }

@@ -1,11 +1,12 @@
 import React from 'react'
-import { MainClassList} from './lists'
+import styled from 'styled-components'
+import { MainClassList } from './lists'
+import ListLayout from './layout/ListLayout'
 
 export default function MainClasses () {
   return (
-    <>
-      <h1>Main Classes</h1>
+    <ListLayout header={'Main Classes'}>
       <MainClassList/>
-    </>
+    </ListLayout>
   )
 }

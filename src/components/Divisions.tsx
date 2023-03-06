@@ -3,6 +3,7 @@ import { Division } from '../types/dewey'
 import { divisionPickUntilSatisfied } from '../picker/division_picker'
 import List from './lists/List'
 import MainClassFilterContext from '../context/MainClassFilterContext'
+import ListLayout from './layout/ListLayout'
 
 export default function Divisions () {
   const context = useContext(MainClassFilterContext)
@@ -29,10 +30,9 @@ export default function Divisions () {
   }
 
   return (
-    <>
-      <h2>Divisions</h2>
+    <ListLayout header={'Divisions'}>
       <div><label><input type="number" value={count} onChange={handleChange}/>count</label></div>
       <List display={displayDivisions}/>
-    </>
+    </ListLayout>
   )
 }

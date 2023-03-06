@@ -30,9 +30,9 @@ export default function Entry ({ item, handleClick }: Props) {
 const Container = styled.div`
   align-items: center;
   border: 1px solid #ace;
+  display: flex;
   gap: 16px;
   justify-content: flex-start;
-  display: flex;
   
   &:hover {
     border: 1px solid green;
@@ -51,6 +51,7 @@ const Container = styled.div`
 const Code = styled.div`
   font-family: "Roboto Mono", monospace;
   font-size: 1.2rem;
+  padding-left: 4px;
 `
 
 const Name = styled.div`
