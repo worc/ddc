@@ -20,23 +20,23 @@ export default function Sections () {
       const inMain = mainFilters.some(filter => filter.code.startsWith(sectionMainClass))
       const inDivision = divisionFilters.some(filter => filter.code.startsWith(sectionDivision))
 
-      if (mainFilters.length && !divisionFilters.length) {
+      if (mainFilters.length > 0 && divisionFilters.length === 0) {
         return inMain
-      } else if (!mainFilters.length && divisionFilters.length) {
+      } else if (mainFilters.length === 0 && divisionFilters.length > 0) {
         return inDivision
-      } else if (mainFilters.length && divisionFilters.length) {
-        return inMain && inDivision
+      } else if (mainFilters.length > 0 && divisionFilters.length > 0) {
+        return inMain || inDivision
       } else {
         return true
       }
     })
   }, [mainFilters, divisionFilters])
 
-  const [displaySections, setFilters, increment, decrement, shuffle] = useFilteredEntries<Section>(sections, validSections, 5)
-
   useEffect(() => {
     setFilters(validSections)
   }, [validSections])
+
+  const [displaySections, setFilters, increment, decrement, shuffle] = useFilteredEntries<Section>(sections, [], validSections, 7)
 
   return (
     <ListLayout header={'Sections'}>

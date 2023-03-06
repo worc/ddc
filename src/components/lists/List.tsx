@@ -22,5 +22,5 @@ export default function List ({ display, handleClick, isMainClass = false, isDiv
 }
 
 const Container = styled.div`
-  border: 1px solid #bad;
+  border: 0 solid #bad;
 `

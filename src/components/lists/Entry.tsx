@@ -33,17 +33,17 @@ export default function Entry ({ item, handleClick, isMainClass = false, isDivis
 
 const Container = styled.div`
   align-items: center;
-  border: 1px solid #ace;
+  border: 1px solid #fff;
   display: flex;
   gap: 16px;
   justify-content: flex-start;
   
   &:hover {
-    border: 1px solid green;
+    border: 1px solid #00a2bd;
   }
   
   &:active {
-    border: 1px solid red;
+    box-shadow: inset 0 0 6px #00a2bd;
   }
   
   &.filter-on {

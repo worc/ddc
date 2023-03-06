@@ -9,6 +9,7 @@ interface Props {
   handleUp: IControlProps['handleClick']
   handleDown: IControlProps['handleClick']
   handleShuffle: IControlProps['handleClick']
+  // handleClear: IControlProps['handleClick']
 }
 
 export default function ControlBar ({ ...args }: Props) {
