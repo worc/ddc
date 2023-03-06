@@ -20,12 +20,13 @@ export default function ListLayout (props: React.PropsWithChildren<Props>) {
 const Container = styled.div`
   display: flex;
   flex-flow: row nowrap;
+  padding-top: 4px;
   transition: height 0.2s ease-in-out 0.1s;
 
   & > .list-header {
     flex: 0 0 auto;
     order: 2;
-    writing-mode: sideways-lr;
+    writing-mode: vertical-lr;
     width: 45px;
   }
 

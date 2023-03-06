@@ -26,6 +26,7 @@ export default function ControlBar ({ ...args }: Props) {
 
 const Container = styled.div`
   display: flex;
+  margin-top: 4px;
   
   & > button {
     background: #047695;

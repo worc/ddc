@@ -22,9 +22,11 @@ export default function App () {
 const Container = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  gap: 4px;
   height: 100%;
   
   & > *:not(:last-child) {
     border-bottom: 4px dotted black;
+    padding-bottom: 1px;
   }
 `

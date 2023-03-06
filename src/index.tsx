@@ -5,6 +5,7 @@ import App from './app'
 
 const GlobalStyle = createGlobalStyle`
   html {
+    box-sizing: border-box;
     font-family: "Rokkitt", serif;
     font-size: 16px;
   }

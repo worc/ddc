@@ -39,9 +39,11 @@ export default function Sections () {
   const [displaySections, setFilters, increment, decrement, shuffle] = useFilteredEntries<Section>(sections, [], validSections, 7)
 
   return (
-    <ListLayout header={'Sections'}>
+    <div>
+      <ListLayout header={'Sections'}>
+        <List display={displaySections}/>
+      </ListLayout>
       <ControlBar handleUp={increment} handleDown={decrement} handleShuffle={shuffle}/>
-      <List display={displaySections}/>
-    </ListLayout>
+    </div>
   )
 }

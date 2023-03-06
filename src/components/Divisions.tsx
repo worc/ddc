@@ -28,9 +28,11 @@ export default function Divisions () {
   }, [validDivisions])
 
   return (
-    <ListLayout header={'Divisions'}>
+    <div>
+      <ListLayout header={'Divisions'}>
+        <DivisionList list={displayDivisions}/>
+      </ListLayout>
       <ControlBar handleUp={increment} handleDown={decrement} handleShuffle={shuffle} />
-      <DivisionList list={displayDivisions}/>
-    </ListLayout>
+    </div>
   )
 }
