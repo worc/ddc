@@ -11,8 +11,10 @@ interface Props {
 export default function Entry ({ item, handleClick }: Props) {
   const context = useContext(MainClassFilterContext)
 
+  //TODO find unique active filters
   const activeFilters = Object.entries(context.filters).filter(filter => filter[1])
   const activeCodes = activeFilters.map(entry => entry[0])
+  // const isActive = activeFilters.some(filter => (filter.code === item.code))
 
   return (
     <Container

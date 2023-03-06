@@ -19,7 +19,6 @@ export default function App () {
   return (
     <MainClassFilterContext.Provider value={{ filters: mainClassFilters, setFilters }}>
       <MainClasses/>
-      <hr/>
       <Divisions/>
       <hr/>
       <Sections/>
