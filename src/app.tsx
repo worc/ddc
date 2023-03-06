@@ -20,7 +20,6 @@ export default function App () {
     <MainClassFilterContext.Provider value={{ filters: mainClassFilters, setFilters }}>
       <MainClasses/>
       <Divisions/>
-      <hr/>
       <Sections/>
       <pre>{ JSON.stringify(mainClassFilters, null, 2)}</pre>
     </MainClassFilterContext.Provider>

@@ -1,21 +1,26 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { sectionPicker } from '../picker/_picker'
 import List from './lists/List'
 import ListLayout from './layout/ListLayout'
+import useCount from '../hooks/useCount'
+import ControlBar from './controls/ControlBar'
 
 export default function Sections () {
-  const [count, setCount] = useState(5)
+  const [count, increment, decrement] = useCount(5)
+  const [stale, setStale] = useState(1)
 
-  const sections = sectionPicker(count)
+  const sections = useMemo(() => {
+    return sectionPicker(count)
+  }, [count, stale])
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const count = parseInt(event.target.value, 10)
-    setCount(count)
+  function handleShuffle () {
+    const newStale = stale * -1
+    setStale(newStale)
   }
 
   return (
     <ListLayout header={'Sections'}>
-      <div><label><input type="number" value={count} onChange={handleChange}/>count</label></div>
+      <ControlBar handleUp={increment} handleDown={decrement} handleShuffle={handleShuffle}/>
       <List display={sections}/>
     </ListLayout>
   )
