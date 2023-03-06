@@ -1,9 +1,7 @@
 import { MainClass } from '../types/dewey'
 import { MainClasses } from '../const/MainClass'
-import shuffle from '../util/shuffle'
+import pickFromGenerator from '../util/pickFromGenerator'
 
-export default function mainClassPicker(): MainClass {
-  const shuffled = shuffle<MainClass>(MainClasses)
-
-  return shuffled[0]
+export default function mainClassPicker(count = 1):  MainClass[] {
+  return pickFromGenerator<MainClass>(MainClasses, count)
 }

@@ -1,31 +1,43 @@
 import { describe, expect, test } from '@jest/globals'
 import { mainClassPicker, divisionPicker, sectionPicker } from './_picker'
+import { MainClasses } from '../const/MainClass'
 
 describe('Pickers', () => {
-  describe('Main class picker', () => {
-    test('Returns one Dewey Decimal major class', () => {
-      const mainClass = mainClassPicker()
+  describe('By default return one class in an array', () => {
+    test('Main class picker:', () => {
+      const mainClass = mainClassPicker()[0]
 
       expect(mainClass.code).toBeTruthy()
       expect(mainClass.name).toBeTruthy()
     })
-  })
 
-  describe('Division picker', () => {
-    test('Returns one Dewey Decimal division', () => {
-      const division = divisionPicker()
+    test('Division picker', () => {
+      const division = divisionPicker()[0]
 
       expect(division.code).toBeTruthy()
       expect(division.name).toBeTruthy()
     })
-  })
 
-  describe('Section picker', () => {
-    test('Returns one Dewey Decimal major class', () => {
-      const section = sectionPicker()
+    test('Section picker', () => {
+      const section = sectionPicker()[0]
 
       expect(section.code).toBeTruthy()
       expect(section.name).toBeTruthy()
     })
+  })
+
+  test('Return multiple classes', () => {
+    const count = 5
+    const mainClasses = mainClassPicker(count)
+
+    expect(mainClasses).toHaveLength(5)
+  })
+
+  test('Can pick more than the length of the original array', () => {
+    const count = 11
+    const results = mainClassPicker(count)
+
+    expect(results).toHaveLength(11)
+    expect(results.length > MainClasses.length)
   })
 })
