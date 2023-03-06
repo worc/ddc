@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals'
 import { mainClassPicker, divisionPicker, sectionPicker } from './_picker'
-import { MainClasses } from '../const/MainClass'
+import { mainClassList } from '../const/MainClass'
 
 describe('Pickers', () => {
   describe('By default return one class in an array', () => {
