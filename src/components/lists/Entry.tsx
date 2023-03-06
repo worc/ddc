@@ -3,22 +3,25 @@ import styled from 'styled-components'
 
 import { DeweyClass } from '../../types/dewey'
 import MainClassFilterContext from '../../context/MainClassFilterContext'
+import DivisionFilterContext from '../../context/DivisionFilterContext'
 
 interface Props {
   item: DeweyClass
   handleClick?: (event: React.MouseEvent<HTMLDivElement>) => void
   isMainClass?: boolean
+  isDivision?: boolean
 }
-export default function Entry ({ item, handleClick, isMainClass = false }: Props) {
-  const { filters } = useContext(MainClassFilterContext)
+export default function Entry ({ item, handleClick, isMainClass = false, isDivision = false }: Props) {
+  const { filters: mainFilters } = useContext(MainClassFilterContext)
+  const { filters: divisionFilters } = useContext(DivisionFilterContext)
 
-  const isActive = filters.some(filter => (filter.code === item.code && filter.name === item.name))
+  const isActive = isMainClass && mainFilters.some(filter => (filter.code === item.code && filter.name === item.name)) || isDivision && divisionFilters.some(filter => (filter.code === item.code && filter.name === item.name))
 
   return (
     <Container
       data-code={item.code}
       data-name={item.name}
-      className={isActive && isMainClass ? 'filter-on' : ''}
+      className={isActive ? 'filter-on' : ''}
       key={`${item.code}_${item.name}`}
       onClick={handleClick}
     >

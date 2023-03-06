@@ -5,7 +5,7 @@ import MainClassFilterContext from '../../context/MainClassFilterContext'
 import { mainClassList } from '../../const/MainClass'
 
 export default function MainClassList () {
-  const context = useContext(MainClassFilterContext)
+  const { filters, setFilters } = useContext(MainClassFilterContext)
 
   function handleClick (event: React.MouseEvent<HTMLDivElement>) {
     const code = event.currentTarget.dataset.code as MainClassCode
@@ -16,14 +16,14 @@ export default function MainClassList () {
       name,
     }
 
-    const inFilters = context.filters.some(filter => filter.code === code)
+    const inFilters = filters.some(filter => filter.code === code && filter.name === name)
 
     if (inFilters) {
-      const newFilters = context.filters.filter(filter => filter.code !== code)
-      context.setFilters([...newFilters])
+      const newFilters = filters.filter(filter => filter.code !== code)
+      setFilters([...newFilters])
     } else {
-      const newFilters = context.filters.concat(filter)
-      context.setFilters([...newFilters])
+      const newFilters = filters.concat(filter)
+      setFilters([...newFilters])
     }
   }
 

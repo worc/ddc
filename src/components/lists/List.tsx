@@ -7,13 +7,14 @@ interface Props {
   display: DeweyClass[]
   handleClick?: (event: React.MouseEvent<HTMLDivElement>) => void
   isMainClass?: boolean
+  isDivision?: boolean
 }
 
-export default function List ({ display, handleClick, isMainClass = false }: Props) {
+export default function List ({ display, handleClick, isMainClass = false, isDivision = false }: Props) {
   return (
     <Container>
       { display.map(item => (
-        <Entry item={item} handleClick={handleClick} isMainClass={isMainClass}/>
+        <Entry item={item} handleClick={handleClick} isMainClass={isMainClass} isDivision={isDivision}/>
       ))
       }
     </Container>

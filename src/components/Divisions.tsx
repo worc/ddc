@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useMemo } from 'react'
-import List from './lists/List'
-import MainClassFilterContext from '../context/MainClassFilterContext'
-import ListLayout from './layout/ListLayout'
 import ControlBar from './controls/ControlBar'
+import { DivisionList } from './lists/'
 import { Divisions as divisions } from '../const/Division'
+import ListLayout from './layout/ListLayout'
+import MainClassFilterContext from '../context/MainClassFilterContext'
 import useFilteredEntries from '../hooks/useFilteredEntries'
 
 // TODO stabilize the list on MORE/LESS
@@ -28,7 +28,7 @@ export default function Divisions () {
   return (
     <ListLayout header={'Divisions'}>
       <ControlBar handleUp={increment} handleDown={decrement} handleShuffle={shuffle} />
-      <List display={displayDivisions}/>
+      <DivisionList list={displayDivisions}/>
     </ListLayout>
   )
 }

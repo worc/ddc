@@ -6,18 +6,31 @@ import MainClassFilterContext from '../context/MainClassFilterContext'
 import { Section } from '../types/dewey'
 import { Sections as sections } from '../const/Section'
 import useFilteredEntries from '../hooks/useFilteredEntries'
+import DivisionFilterContext from '../context/DivisionFilterContext'
 
 export default function Sections () {
-  const { filters } = useContext(MainClassFilterContext)
+  const { filters: mainFilters } = useContext(MainClassFilterContext)
+  const { filters: divisionFilters } = useContext(DivisionFilterContext)
 
   const validSections = useMemo(() => {
     return sections.filter(item => {
-      if (filters.length === 0) return true
-
       const sectionMainClass = item.code[0]
-      return filters.some(filter => filter.code.startsWith(sectionMainClass))
+      const sectionDivision = `${item.code[0]}${item.code[1]}`
+
+      const inMain = mainFilters.some(filter => filter.code.startsWith(sectionMainClass))
+      const inDivision = divisionFilters.some(filter => filter.code.startsWith(sectionDivision))
+
+      if (mainFilters.length && !divisionFilters.length) {
+        return inMain
+      } else if (!mainFilters.length && divisionFilters.length) {
+        return inDivision
+      } else if (mainFilters.length && divisionFilters.length) {
+        return inMain && inDivision
+      } else {
+        return true
+      }
     })
-  }, [filters])
+  }, [mainFilters, divisionFilters])
 
   const [displaySections, setFilters, increment, decrement, shuffle] = useFilteredEntries<Section>(sections, validSections, 5)
 
