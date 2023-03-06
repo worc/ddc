@@ -10,6 +10,7 @@ module.exports = {
   ],
 
   output: {
+    clean: true,
     filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, 'docs'),
   },
